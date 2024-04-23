@@ -20,9 +20,11 @@ pipeline {
             post {
                 always {
                     emailext (
-                        to: "danleecarroll@gmail.com",
-                        subject: "$DEFAULT_SUBJECT",
-                        body: "$DEFAULT_CONTENT"
+                        to: 'danleecarroll@gmail.com',
+                        subject: '$GIT_BRANCH $GIT_REVISION - Build # $BUILD_NUMBER - $BUILD_STATUS!',
+                        body: 'Build log is attached.',
+                        attachLog: true,
+                        compressLog: true
                     )
                 }
             }
@@ -39,9 +41,11 @@ pipeline {
             post {
                 always {
                     emailext (
-                        to: "danleecarroll@gmail.com",
-                        subject: "$DEFAULT_SUBJECT",
-                        body: "$DEFAULT_CONTENT"
+                        to: 'danleecarroll@gmail.com',
+                        subject: '$GIT_BRANCH $GIT_REVISION - Build # $BUILD_NUMBER - $BUILD_STATUS!',
+                        body: 'Build log is attached.',
+                        attachLog: true,
+                        compressLog: true
                     )
                 }
             }
