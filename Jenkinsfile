@@ -20,8 +20,8 @@ pipeline {
             post {
                 always {
                     emailext body: "Emailext test",
-                        recipientProviders: [developers(), requestor()],
-                        subject: "Emailext test"
+                        subject: "Emailext test",
+                        to: "danleecarroll@gmail.com"
                 }
             }
         }
