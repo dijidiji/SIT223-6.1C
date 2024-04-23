@@ -20,9 +20,10 @@ pipeline {
             post {
                 always {
                     emailext (
+                        from: 'Local Jenkins <danleecarroll@gmail.com>',
                         to: 'danleecarroll@gmail.com',
-                        subject: '$GIT_BRANCH $GIT_REVISION - Build # $BUILD_NUMBER - $BUILD_STATUS!',
-                        body: 'Build log is attached.',
+                        subject: '$PROJECT_NAME Test - Build # $BUILD_NUMBER - $BUILD_STATUS!',
+                        body: '$GIT_BRANCH $GIT_REVISION - Build # $BUILD_NUMBER - $BUILD_STATUS! Build log is attached.',
                         attachLog: true,
                         compressLog: true
                     )
@@ -41,9 +42,10 @@ pipeline {
             post {
                 always {
                     emailext (
+                        from: 'Local Jenkins <danleecarroll@gmail.com>',
                         to: 'danleecarroll@gmail.com',
-                        subject: '$GIT_BRANCH $GIT_REVISION - Build # $BUILD_NUMBER - $BUILD_STATUS!',
-                        body: 'Build log is attached.',
+                        subject: '$PROJECT_NAME Security scan - Build # $BUILD_NUMBER - $BUILD_STATUS!',
+                        body: '$GIT_BRANCH $GIT_REVISION - Build # $BUILD_NUMBER - $BUILD_STATUS! Build log is attached.',
                         attachLog: true,
                         compressLog: true
                     )
