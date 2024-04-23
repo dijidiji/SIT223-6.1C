@@ -19,9 +19,11 @@ pipeline {
             }
             post {
                 always {
-                    emailext body: "Emailext test",
-                        subject: "Emailext test",
-                        to: "danleecarroll@gmail.com"
+                    emailext (
+                        to: "danleecarroll@gmail.com",
+                        subject: "$DEFAULT_SUBJECT",
+                        body: "$DEFAULT_CONTENT"
+                    )
                 }
             }
         }
@@ -36,7 +38,11 @@ pipeline {
             }
             post {
                 always {
-                    echo "TODO: email notification"
+                    emailext (
+                        to: "danleecarroll@gmail.com",
+                        subject: "$DEFAULT_SUBJECT",
+                        body: "$DEFAULT_CONTENT"
+                    )
                 }
             }
         }
