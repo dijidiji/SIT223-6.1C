@@ -19,7 +19,9 @@ pipeline {
             }
             post {
                 always {
-                    echo "TODO: email notification"
+                    emailext body: "Emailext test",
+                        recipientProviders: [developers(), requestor()],
+                        subject: "Emailext test"
                 }
             }
         }
