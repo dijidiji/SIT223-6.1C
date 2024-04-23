@@ -17,30 +17,40 @@ pipeline {
                 echo "2a. unit tests"
                 echo "2b. integration tests"
             }
+            post {
+                always {
+                    echo "TODO: email notification"
+                }
+            }
         }
         stage("Code quality check") {
             steps {
                 echo "3. check the quality of the code"
             }
         }
-        stage("Deploy") {
+        stage("Security scan") {
             steps {
-                echo "4. deploy to $TESTING_ENVIRONMENT"
+                echo "4. Perform security scan on code"
+            }
+            post {
+                always {
+                    echo "TODO: email notification"
+                }
             }
         }
-        stage("Approval") {
-            options {
-                timeout(time: 15, unit: 'SECONDS')
-            }
+        stage("Deploy to staging") {
             steps {
-                echo "5a. get approval"
-                sleep 10
-                echo "5b. approved!"
+                echo "5. deploy to $TESTING_ENVIRONMENT"
+            }
+        }
+        stage("Staging tests") {
+            steps{
+                echo "6. run integration tests on $TESTING_ENVIRONMENT"
             }
         }
         stage("Deploy to production") {
             steps {
-                echo "6. deploy to $PRODUCTION_ENVIRONMENT"
+                echo "7. deploy to $PRODUCTION_ENVIRONMENT"
             }
         }
     }
